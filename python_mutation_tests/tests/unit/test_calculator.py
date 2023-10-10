@@ -11,3 +11,14 @@ class TestCalculator:
         
         # Then
         assert result == 2
+
+    def test_subtract(self):
+        # Given
+        minuend = 0
+        subtrahend = 0
+        
+        # When
+        result = calculator.subtract(minuend, subtrahend)
+        
+        # Then
+        assert result == 0
