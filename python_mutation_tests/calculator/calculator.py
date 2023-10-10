@@ -31,10 +31,10 @@ def is_positive(number: int) -> bool:
 
 def compare(number_1: int, number_2: int) -> Literal[-1, 0, 1]:
     if number_1 == number_2:
-        value = 0
+        value: Literal[0] = 0
     elif number_1 > number_2:
-        value = 1
+        value: Literal[1] = 1  # type: ignore[no-redef]
     else:
-        value = -1
+        value: Literal[-1] = -1  # type: ignore[no-redef]
 
     return value
