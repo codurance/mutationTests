@@ -1,3 +1,6 @@
+from typing import Literal
+
+
 def add(summand_1: int, summand_2: int) -> int:
     return summand_1 + summand_2
 
@@ -24,3 +27,14 @@ def summation(start: int) -> int:
 
 def is_positive(number: int) -> bool:
     return number > 0
+
+
+def compare(number_1: int, number_2: int) -> Literal[-1, 0, 1]:
+    if number_1 == number_2:
+        value = 0
+    elif number_1 > number_2:
+        value = 1
+    else:
+        value = -1
+
+    return value

@@ -108,3 +108,27 @@ class TestCalculator:
 
         # Then
         assert not result
+
+    def test_compare_should_return_zero_if_two_numbers_are_equals(self):
+        # Given
+        term_1 = 0
+        term_2 = 0
+
+        # When
+        result = calculator.compare(term_1, term_2)
+
+        # Then
+        assert result == 0
+
+    def test_compare_should_return_one_if_the_first_term_is_larger_than_the_second(  # noqa: E501 <-this is just to allow this long line when linting
+        self,
+    ):
+        # Given
+        term_1 = 2
+        term_2 = 0
+
+        # When
+        result = calculator.compare(term_1, term_2)
+
+        # Then
+        assert result == 1
