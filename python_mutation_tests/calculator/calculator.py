@@ -12,3 +12,11 @@ def multiply(factor_1: int, factor_2: int) -> int:
 
 def divide(dividend: int, divisor: int) -> int:
     return int(dividend / divisor)
+
+
+def summation(start: int) -> int:
+    value = 0
+    while start > 0:
+        value += start
+        start -= 1
+    return value

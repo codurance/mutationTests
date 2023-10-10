@@ -44,7 +44,7 @@ class TestCalculator:
         # Then
         assert result == 0
 
-    def test_divide_should_return_always_an_integer_as_a_result_of_the_division(
+    def test_divide_should_return_always_an_integer_as_a_result_of_the_division(  # noqa: E501 <-this is just to allow this long line when linting
         self,
     ):
         # Given
@@ -56,3 +56,35 @@ class TestCalculator:
 
         # Then
         assert result == 10
+
+    def test_summation_should_return_zero_when_starting_at_zero(self):
+        # Given
+        start = 0
+
+        # When
+        result = calculator.summation(start)
+
+        # Then
+        assert result == 0
+
+    def test_summation_should_return_one_when_starting_at_one(self):
+        # Given
+        start = 1
+
+        # When
+        result = calculator.summation(start)
+
+        # Then
+        assert result == 1
+
+    def test_summation_should_return_the_sum_of_all_integers_from_start_downward_to_zero(  # noqa: E501 <-this is just to allow this long line when linting
+        self,
+    ):
+        # Given
+        start = 2
+
+        # When
+        result = calculator.summation(start)
+
+        # Then
+        assert result == 3
