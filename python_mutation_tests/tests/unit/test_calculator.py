@@ -88,3 +88,23 @@ class TestCalculator:
 
         # Then
         assert result == 3
+
+    def test_positive_should_true_if_the_term_is_a_positive_number(self):
+        # Given
+        term = 2
+
+        # When
+        result = calculator.is_positive(term)
+
+        # Then
+        assert result
+
+    def test_positive_should_false_if_the_term_is_a_negative_number(self):
+        # Given
+        term = -2
+
+        # When
+        result = calculator.is_positive(term)
+
+        # Then
+        assert not result

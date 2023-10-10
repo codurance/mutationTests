@@ -20,3 +20,7 @@ def summation(start: int) -> int:
         value += start
         start -= 1
     return value
+
+
+def is_positive(number: int) -> bool:
+    return number > 0
