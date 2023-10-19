@@ -1,3 +1,5 @@
+package com.codurance.calculator;
+
 public class calculator {
     /**
      * This method return the plus between two numbers
