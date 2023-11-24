@@ -29,7 +29,7 @@ jobs:
       - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
         run: |
-          mvn --batch-mode -Dmaven.test.failure.ignore=true test-compile org.pitest:pitest-maven:mutationCoverage
+          mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage
           
       - name: Report
         uses: dorny/test-reporter@v1
