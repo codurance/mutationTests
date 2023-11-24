@@ -32,10 +32,7 @@ jobs:
           mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage
           
       - name: Report
-        uses: dorny/test-reporter@v1
-        if: always()
+        uses: peaceiris/actions-gh-pages@v3
         with:
-            name: Maven Tests
-            path: target/surefire-reports/*.xml
-            reporter: java-junit
-            fail-on-error: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/pit-reports/*/
