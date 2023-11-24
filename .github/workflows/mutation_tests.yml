@@ -20,16 +20,17 @@ jobs:
         with:
             distribution: 'oracle'
             java-version: '17'
-            cache: maven
-      
-      - name: Build project
-        working-directory: java_calculadora_mutation_tests
-        run: mvn --batch-mode -DskipTests package
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
 
       - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
         run: |
-          mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage
+          mvn package -Ppitest org.pitest:pitest-maven:mutationCoverage
           
       - name: Report
         uses: peaceiris/actions-gh-pages@v3
