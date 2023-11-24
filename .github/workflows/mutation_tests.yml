@@ -12,15 +12,17 @@ jobs:
     runs-on: windows-latest
     name: Mutation Test Execution
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          
       - name: Setup Java JDK
         uses: actions/setup-java@v3.13.0
         with:
             distribution: 'oracle'
             java-version: '17'
-      - name: Checkout
-        uses: actions/checkout@v4
+            cache: maven
 
       - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
         run: |
-          mvn clean verify test-compile org.pitest:pitest-maven:mutationCoverage
+          mvn --batch-mode --update-snapshots verify test-compile org.pitest:pitest-maven:mutationCoverage
