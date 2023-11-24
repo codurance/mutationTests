@@ -1,0 +1,21 @@
+---
+name: Run mutation tests
+
+on:
+  workflow_dispatch:
+  
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Run-mutation-tests:
+    runs-on: windows-latest
+    name: Mutation Test Execution
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run mutation tests in Java
+        working-directory: java_calculadora_mutation_tests
+        run: |
+          mvn clean verify test-compile org.pitest:pitest-maven:mutationCoverage
