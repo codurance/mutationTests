@@ -23,6 +23,7 @@ jobs:
             cache: maven
       
       - name: Build project
+        working-directory: java_calculadora_mutation_tests
         run: mvn --batch-mode -DskipTests package
 
       - name: Run mutation tests in Java
