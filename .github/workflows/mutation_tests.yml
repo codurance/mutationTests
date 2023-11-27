@@ -47,7 +47,7 @@ jobs:
       - name: Set up test environment
         working-directory: python_mutation_tests
         run: |
-          python3 -m pip install --user pipx
+          pip install --user pipx
           pipx install poetry
           poetry install
           
