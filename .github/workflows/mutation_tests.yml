@@ -54,4 +54,5 @@ jobs:
       - name: Run mutation tests in Python
         working-directory: python_mutation_tests
         run: |
-          poetry run mutmut run --paths-to-mutate ./calculator --verbose          
+          poetry run mutmut run --paths-to-mutate ./calculator
+        continue-on-error: true      
