@@ -29,7 +29,7 @@ jobs:
       - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
         run: |
-          mvn test-compile org.pitest:pitest-maven:mutationCoverage          
+          mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage          
     
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
