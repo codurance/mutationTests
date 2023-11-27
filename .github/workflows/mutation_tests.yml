@@ -56,3 +56,9 @@ jobs:
         run: |
           poetry run mutmut run --paths-to-mutate ./calculator > mutmut_output.log 2>&1
         continue-on-error: true
+        
+      - name: Upload Log File
+        uses: actions/upload-artifact@v2
+        with:
+          name: mutmut-logs
+          path: python_mutation_tests/mutmut_output.log
