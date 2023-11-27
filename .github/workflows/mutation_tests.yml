@@ -25,21 +25,17 @@ jobs:
         uses: skjolber/maven-cache-github-action@v1
         with:
           step: restore
-      
-      - name: Build project
+          
+      - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
-        run: mvn --batch-mode -DskipTests package
-
+        run: |
+          mvn test-compile org.pitest:pitest-maven:mutationCoverage          
+    
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
           step: save
-      
-      - name: Run mutation tests in Java
-        working-directory: java_calculadora_mutation_tests
-        run: |
-          mvn test-compile org.pitest:pitest-maven:mutationCoverage
-          
+    
       - name: Report
         uses: peaceiris/actions-gh-pages@v3
         with:
