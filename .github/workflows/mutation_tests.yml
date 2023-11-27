@@ -21,20 +21,18 @@ jobs:
             distribution: 'oracle'
             java-version: '17'
             
-      - name: Restore Maven cache
-        uses: skjolber/maven-cache-github-action@v1
+      - name: Cache project      
+        uses: actions/cache@v3
         with:
-          step: restore
+          path: ./java_calculadora_mutation_tests
+          key: ${{ runner.os }}-java_calculadora_mutation_tests-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
           
       - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
         run: |
           mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage          
-    
-      - name: Save Maven cache
-        uses: skjolber/maven-cache-github-action@v1
-        with:
-          step: save
     
       - name: Report
         uses: peaceiris/actions-gh-pages@v3
