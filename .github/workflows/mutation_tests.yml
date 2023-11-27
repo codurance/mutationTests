@@ -1,0 +1,58 @@
+---
+name: Run mutation tests
+
+on:
+  workflow_dispatch:
+  
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Run-java-mutation-tests:
+    runs-on: ubuntu-latest
+    name: Java Mutation Test Execution
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.13.0
+        with:
+            distribution: 'oracle'
+            java-version: '17'
+          
+      - name: Run mutation tests in Java
+        working-directory: java_calculadora_mutation_tests
+        run: |
+          mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage          
+    
+      - name: Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./java_calculadora_mutation_tests/target/pit-reports/
+
+  Run-python-mutation-tests:
+    runs-on: ubuntu-latest
+    name: Python Mutation Test Execution
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Set up test environment
+        working-directory: python_mutation_tests
+        run: |
+          pip install --user pipx
+          pipx install poetry
+          poetry install
+          
+      - name: Run mutation tests in Python
+        working-directory: python_mutation_tests
+        run: |
+          poetry run mutmut run --paths-to-mutate ./calculator
+        continue-on-error: true      
