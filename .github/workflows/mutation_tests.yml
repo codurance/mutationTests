@@ -38,7 +38,7 @@ jobs:
       - name: Run mutation tests in Java
         working-directory: java_calculadora_mutation_tests
         run: |
-          mvn --batch-mode test-compile org.pitest:pitest-maven:mutationCoverage
+          mvn test-compile org.pitest:pitest-maven:mutationCoverage
           
       - name: Report
         uses: peaceiris/actions-gh-pages@v3
