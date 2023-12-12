@@ -38,11 +38,11 @@ public class calculator {
      *  This is a start value
      * @return The summation of all the numbers
      */
-    public int summation(int start){
+    public int summation(int start) {
         int value = 0;
-        while (start >0){
+        while (start != 0) {
             value += start;
-            start --;
+            start--;
         }
         return value;
     }
@@ -56,14 +56,6 @@ public class calculator {
      * @return 0 if a==b, 1 if a> b, -1 if a<b
      */
     public int compare(int a, int b){
-        int value = 0;
-        if (a==b){
-            value = 0;
-        }else if (a > b){
-            value =1;
-        }else {
-            value = -1;
-        }
-        return value;
+        return Integer.compare(a, b);
     }
 }

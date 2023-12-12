@@ -20,12 +20,12 @@ public class calculatorTest {
 
         @Test
         public void testSubtract() {
-            Assertions.assertEquals(c.subtract(0,0),0);
+            Assertions.assertEquals(c.subtract(3,2),1);
         }
 
         @Test
         public void testMultiply(){
-            Assertions.assertEquals(c.multiply(1,1),1);
+            Assertions.assertEquals(c.multiply(2,6),12);
         }
 
         @Test
@@ -35,20 +35,22 @@ public class calculatorTest {
         }
         @Test
         public void testSummation(){
-            Assertions.assertEquals(c.summation(2),3);
-            Assertions.assertEquals(c.summation(1),1);
-            Assertions.assertEquals(c.summation(0),0);
+            Assertions.assertEquals(3, c.summation(2));
+            Assertions.assertEquals(1, c.summation(1));
+            Assertions.assertEquals(0, c.summation(0));
         }
         @Test
         public void testPositive(){
             Assertions.assertTrue(c.isPositive(2));
             Assertions.assertFalse(c.isPositive(-2));
+            Assertions.assertFalse(c.isPositive(0));
         }
 
         @Test
         public void testCompare(){
-            Assertions.assertEquals(c.compare(0,0),0);
-            Assertions.assertEquals(c.compare(2,0),1);
+            Assertions.assertEquals(0, c.compare(0, 0));
+            Assertions.assertEquals(1, c.compare(2, 0));
+            Assertions.assertEquals(-1, c.compare(2,5));
         }
     }
 
